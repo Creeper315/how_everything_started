@@ -1,0 +1,8 @@
+
+$nav-height:60px;
+$body-height: calc(100vh - $nav-height);
+
+@mixin fontS($size: 10px, $weight: bold) {
+    font-size: $size;
+    font-weight: $weight;
+}

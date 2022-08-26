@@ -1,0 +1,17 @@
+@import 'variable';
+
+.haha{
+    border: 1px solid green;
+    border-radius: 10px;
+}
+
+#top-nav {
+    @extend .haha;
+    @include fontS(20px, $weight: bold);
+    width: 100vw;
+    height: $nav-height;
+    display: flex;
+    gap: 20px;
+    color: white;
+    background-color: black;
+}
