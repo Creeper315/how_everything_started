@@ -32,6 +32,8 @@ import d6 from '../img/show4/6.png';
 import d7 from '../img/show4/7.png';
 import d8 from '../img/show4/7.png';
 
+// import PreloadImage from 'react-preload-image';
+
 import useSound from 'use-sound';
 import mp3 from '../sound/no29.mp3';
 
@@ -50,8 +52,10 @@ const ImgShow = ({ Section2Finish, containerRef }) => {
     const leftRight = useRef('right');
     const sunRef = useRef();
 
-    const [Sun, setSun] = useState('');
+    // const [Sun, setSun] = useState('');
     const [ImgInDisplay, setImgInDisplay] = useState([]);
+    // const [ImgBuffer, setImgBuffer] = useState(null);
+
     function timePromise(time, callback) {
         return new Promise((resolve) => {
             setTimeout(() => {
@@ -93,21 +97,19 @@ const ImgShow = ({ Section2Finish, containerRef }) => {
         }
         // console.log(imgIdx.current, leftRight.current);
         let obj = {
-            tx: (Math.random() - 0.5) * 0,
-            ty: (Math.random() - 0.5) * 0,
+            tx: 0,
+            ty: 0,
             dir: leftRight.current,
             src: arrayOfImage[imgIdx.current],
         };
+        let preload = new Image();
+        preload.src = obj.src;
         imgIdx.current++;
         return (
-            <div
-                className="img-blur"
-                key={Math.random().toFixed(5).toString()}
-                style={{ transform: `translate(${obj.tx}px,${obj.ty}px)` }}
-            >
+            <div className="img-blur" key={imgIdx.current - 1}>
                 <div className={`img-fall-${obj.dir}`}>
                     <div className={`img-swing-${obj.dir}`}>
-                        <img src={obj.src} alt="img" loading="lazy" />
+                        <img src={obj.src} alt="img" />
                     </div>
                 </div>
             </div>
@@ -117,11 +119,14 @@ const ImgShow = ({ Section2Finish, containerRef }) => {
         let src = arrayOfImage[imgIdx.current];
         imgIdx.current++;
         return (
-            <div className="single-img">
-                <img src={src} alt="img" loading="lazy" />
+            <div className="single-img" key={imgIdx.current - 1}>
+                <img src={src} alt="img" />
             </div>
         );
     }
+    // function addToBuffer(img) {
+    //     setImgBuffer(img);
+    // }
 
     function reset() {
         imgIdx.current = 0;
@@ -133,50 +138,77 @@ const ImgShow = ({ Section2Finish, containerRef }) => {
         // await timePromise(1500, () => {
         //     containerRef.current.children.push(next);
         // });
-        function setNext(arrayOfImage) {
-            return () => setImgInDisplay((e) => [...e, nextImg(arrayOfImage)]);
+        function setNext(buff) {
+            return () => setImgInDisplay((e) => [...e, buff]);
         }
-        function setNextQuick(arrayOfImage) {
-            return () => setImgInDisplay((e) => [nextQuickImg(arrayOfImage)]);
+        function setNextQuick(buff) {
+            return () => setImgInDisplay((e) => [buff]);
         }
         const duration = 1600;
         const durationQuick1 = 424;
-        const durationQuick2 = 450;
-
-        await timePromise(duration, setNext(show1));
-        await timePromise(duration, setNext(show1));
-        await timePromise(duration + 2, setNext(show1));
-        await timePromise(duration, setNext(show1));
-        await timePromise(duration + 2, setNext(show1));
-        await timePromise(duration, setNext(show1));
+        let a, b, c;
+        a = nextImg(show1);
+        await timePromise(duration, setNext(a));
+        b = nextImg(show1);
+        await timePromise(duration, setNext(b));
+        c = nextImg(show1);
+        await timePromise(duration + 2, setNext(c));
+        a = nextImg(show1);
+        await timePromise(duration, setNext(a));
+        b = nextImg(show1);
+        await timePromise(duration + 2, setNext(b));
+        c = nextImg(show1);
+        await timePromise(duration, setNext(c));
         await timePromise(duration + 2, () => reset());
 
-        await timePromise(durationQuick1 * 0.85, setNextQuick(show2));
-        await timePromise(durationQuick1, setNextQuick(show2));
-        await timePromise(durationQuick1, setNextQuick(show2));
-        await timePromise(durationQuick1, setNextQuick(show2));
-        await timePromise(durationQuick1, setNextQuick(show2));
-        await timePromise(durationQuick1, setNextQuick(show2));
-        await timePromise(durationQuick1, setNextQuick(show2));
-        await timePromise(durationQuick1, setNextQuick(show2));
+        a = nextQuickImg(show2);
+        await timePromise(durationQuick1 * 0.85, setNextQuick(a));
+        b = nextQuickImg(show2);
+        await timePromise(durationQuick1, setNextQuick(b));
+        c = nextQuickImg(show2);
+        await timePromise(durationQuick1, setNextQuick(c));
+        a = nextQuickImg(show2);
+        await timePromise(durationQuick1, setNextQuick(a));
+        b = nextQuickImg(show2);
+        await timePromise(durationQuick1, setNextQuick(b));
+        c = nextQuickImg(show2);
+        await timePromise(durationQuick1, setNextQuick(c));
+        a = nextQuickImg(show2);
+        await timePromise(durationQuick1, setNextQuick(a));
+        b = nextQuickImg(show2);
+        await timePromise(durationQuick1, setNextQuick(b));
         await timePromise(durationQuick1, () => reset());
 
-        await timePromise(0, setNext(show3));
-        await timePromise(duration, setNext(show3));
-        await timePromise(duration, setNext(show3));
-        await timePromise(duration, setNext(show3));
-        await timePromise(duration, setNext(show3));
-        await timePromise(duration, setNext(show3));
+        c = nextImg(show3);
+        await timePromise(0, setNext(c));
+        a = nextImg(show3);
+        await timePromise(duration, setNext(a));
+        b = nextImg(show3);
+        await timePromise(duration, setNext(b));
+        c = nextImg(show3);
+        await timePromise(duration, setNext(c));
+        a = nextImg(show3);
+        await timePromise(duration, setNext(a));
+        b = nextImg(show3);
+        await timePromise(duration, setNext(b));
         await timePromise(duration, () => reset());
 
-        await timePromise(durationQuick1, setNextQuick(show4));
-        await timePromise(durationQuick1, setNextQuick(show4));
-        await timePromise(durationQuick1, setNextQuick(show4));
-        await timePromise(durationQuick1, setNextQuick(show4));
-        await timePromise(durationQuick1, setNextQuick(show4));
-        await timePromise(durationQuick1, setNextQuick(show4));
-        await timePromise(durationQuick1, setNextQuick(show4));
-        await timePromise(durationQuick1, setNextQuick(show4));
+        c = nextQuickImg(show4);
+        await timePromise(0, setNextQuick(c));
+        a = nextQuickImg(show4);
+        await timePromise(durationQuick1, setNextQuick(a));
+        b = nextQuickImg(show4);
+        await timePromise(durationQuick1, setNextQuick(b));
+        c = nextQuickImg(show4);
+        await timePromise(durationQuick1, setNextQuick(c));
+        a = nextQuickImg(show4);
+        await timePromise(durationQuick1, setNextQuick(a));
+        b = nextQuickImg(show4);
+        await timePromise(durationQuick1, setNextQuick(b));
+        c = nextQuickImg(show4);
+        await timePromise(durationQuick1, setNextQuick(c));
+        a = nextQuickImg(show4);
+        await timePromise(durationQuick1, setNextQuick(a));
         await timePromise(durationQuick1, () => {
             sunRef.current.textContent = '☀️';
             sunRef.current.style.cursor = 'pointer';
