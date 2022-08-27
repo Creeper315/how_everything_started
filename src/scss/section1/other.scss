@@ -1,0 +1,107 @@
+@import '../variables.scss';
+
+#error-modal{
+    $hh:70px;
+    position: fixed;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 300px;
+    user-select: none;
+    border-radius: 20px;
+    box-shadow: 0 0px 5px -2px $grey-2;
+    z-index: 2;
+    // overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .bar{
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        height: $hh;
+        background-color: rgb(51, 24, 17);
+    }
+    $bk-c:rgb(44, 44, 44, .7);
+    .text{
+        @include centering;
+        color: gainsboro;
+        font-family: monospace;
+        height: 100%;
+        background-color: $bk-c;
+        line-height: 2rem;
+        font-size: 1.1rem;
+
+        // transform: translate();
+    }
+    .choice{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        height: $hh;
+        background-color: $bk-c;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        div{
+            position: relative;
+            background-color: black;
+            padding: 8px 14px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            color: antiquewhite;
+            font-family: monospace;
+            @include centering;
+            cursor: pointer;
+            &:hover{
+                background-color: rgb(47, 47, 47);
+            }
+        }
+    }
+}
+
+#svg-main-contain{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
+    animation: tinDownIn 1.5s ease-out forwards ;
+    .grey-bk{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: grey;
+    }
+}
+
+#svg-day-contain{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    animation: spaceInRight 1.5s ease-in-out forwards;
+}
+#svg-day-contain.quit{
+    animation: spaceOutLeft 1.5s ease-in-out forwards;
+}
+
+#svg-night-contain{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    animation: spaceInRight 1.5s ease-in-out forwards;
+}
+
+#main-page.quit{
+    animation: puffOut 2s ease-in forwards;
+}
+// #svg-night-contain.quit {
+//     animation: spaceOutLeft 1.5s ease-in-out forwards;
+// }

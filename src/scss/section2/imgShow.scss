@@ -1,0 +1,141 @@
+@import '../variables.scss';
+$cub : cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$drop-cub:cubic-bezier(.1, 1.24, .08, 1.51);
+$drop-duration: 1.1s;
+
+$swing-duration: 1.5s;
+$swing-cub: cubic-bezier(.23, 1.53, .46, 1.95);
+// $swing-cub: cubic-bezier(.21, .81, .37, 1.08);
+
+$blur-cub: cubic-bezier(.76, -0.01, .85, .9);
+$blur-duration: 1.5s;
+$blur-delay: 1.5s;
+$time: 2s;
+
+// 最后一个完成的 animation 是 blur，是 duration + delay = k 秒。所以一个图片存在超过 k 秒，就把他移除掉。
+// 因为虽然 blur 成 opacity 0，但是图片还是存在。要移除掉。
+// 有一个 state = 【】 里面装着所有需要 display 的 img。
+
+#img-show-contain{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    @include centering;
+
+    img {
+        width: 430px;
+        height: 310px;
+        object-fit: cover;
+        opacity: .75;
+        box-shadow: 0 0 23px -5px grey;
+    }
+    .single-img{
+        img{
+            width: 380px;
+            height: 290px;
+            opacity: .8;
+        }
+    }
+    span{
+        // font-size: 30px;
+        animation: expand 2s ease-in-out forwards;
+    }
+    
+                 // animation: name duration timing-function delay iteration-count direction fill-mode;
+    .img-blur{
+        position: absolute;
+        animation: imgout $blur-duration $blur-cub $blur-delay forwards;
+    }
+    .img-fall-right{
+        animation: imgdropright $drop-duration $drop-cub forwards;
+    }
+    .img-swing-right{
+        animation: imgswingright $swing-duration $swing-cub forwards;
+    }
+    .img-fall-left {
+        animation: imgdropleft $drop-duration $drop-cub forwards;
+    }
+
+    .img-swing-left {
+        animation: imgswingleft $swing-duration $swing-cub forwards;
+    }
+    .sun{
+        user-select: none;
+    }
+    .arrow-up{
+        transform: scale(1.2);
+    }
+}
+@keyframes expand {
+    from {
+        font-size: 30px;
+    }
+
+    to {
+        font-size: 80px;
+    }
+}
+
+@keyframes imgdropleft {
+    from {
+        transform: translate3d(0, -80%, 0) scale(.8);
+    }
+
+    to {
+        transform: translate3d(-20%, 0%, 0) scale(1);
+    }
+}
+
+@keyframes imgdropright {
+    from{
+        transform: translate3d(0, -80%, 0) scale(.8);
+    }
+    to{
+        transform: translate3d(20%, 0%, 0) scale(1);
+    }
+}
+@keyframes imgswingleft {
+    0% {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+    40% {
+        transform: rotate3d(0, 0, 1, -6deg);
+    }
+    90% {
+        transform: rotate3d(0, 0, 1, -1deg);
+    }
+    100% {
+        transform: rotate3d(0, 0, 1, -2deg);
+    }
+}
+@keyframes imgswingright {
+    0% {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+    40%{
+        transform: rotate3d(0, 0, 1, 6deg);
+    }
+    90% {
+        transform: rotate3d(0, 0, 1, 1deg);
+    }
+    100% {
+        transform: rotate3d(0, 0, 1, 2deg);
+    }
+}
+
+@keyframes imgout {
+    0% {
+        opacity: 1;
+        transform-origin: 50% 50%;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 50% 50%;
+        transform: scale(1.02);
+        filter: blur(8px);
+    }
+}

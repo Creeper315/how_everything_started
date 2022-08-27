@@ -1,0 +1,129 @@
+@import '../variables.scss';
+
+// 1
+// -10, -10
+
+@mixin background {
+    .background-contain{
+        width: 100%;
+        height: 100%;
+        // img.quit{
+        //     animation: backgroundout;
+        // }
+        img{
+            position: absolute;
+        }
+        .img1{
+            object-fit: cover;
+            width: 100%;
+            animation: img1-translate 10s ease-in-out forwards;
+        }
+        .img2 {
+            animation: img2-translate 5s ease-out forwards;
+        }
+        .img3{
+            // transform: translate(0%, 0%);
+            animation: img3-translate 10s linear forwards;
+        }
+        .img4 {
+            // transform: translate(0%, 0%);
+            animation: img4-translate 10s linear forwards;
+        }
+    }
+}
+@keyframes img4-translate {
+    from {
+        transform: translate(-70%, -5%);
+    }
+
+    25% {
+        transform: translate(-55%, -50%);
+    }
+    50% {
+        transform: translate(-40%, -20%);
+    }
+    75% {
+        transform: translate(-30%, -35%);
+    }
+    to {
+        transform: translate(-26%, -41%);
+    }
+}
+
+@keyframes img1-translate {
+    from {
+        transform: translate(0, -70%);
+    }
+
+    50% {
+        transform: translate(0, -5%);
+    }
+
+    to {
+        transform: translate(0, -50%);
+    }
+}
+
+@keyframes img2-translate{
+    from {
+        transform: translate(-10%, -10%);
+    }
+    50% {
+        transform: translate(-2%, -54%);
+    }
+    to {
+        transform: translate(-15%, -52%);
+    }
+}
+
+@keyframes img3-translate {
+    from {
+        transform: translate(0%, 0%);
+    }
+
+    15% {
+        transform: translate(-23%, -3%);
+    }
+
+    30% {
+        transform: translate(-48%, -10%);
+    }
+
+    50% {
+        transform: translate(-60%, -16%);
+    }
+
+    55% {
+        transform: translate(-65%, -20%);
+    }
+
+    60% {
+        transform: translate(-60%, -24%);
+    }
+
+    73% {
+        transform: translate(-48%, -30%);
+    }
+
+    86% {
+        transform: translate(-35%, -32%);
+    }
+
+    to {
+        transform: translate(-25%, -27%);
+    }
+}
+
+@keyframes backgroundout {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.01);
+        filter: blur(5px);
+    }
+}

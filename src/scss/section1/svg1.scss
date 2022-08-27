@@ -1,0 +1,135 @@
+@import '../variables.scss';
+$darkblue: #152c3e;
+$lightblue: #37618a;
+$greenprimary: #879759;
+$greenshadow: #648459;
+
+// tinDownIn
+// spaceInRight
+// spaceOutLeft
+
+@media (max-width: 960px) {
+    #svg-1 {
+        zoom: 0.7;
+    }
+}
+
+#svg-1 {
+    height: 100vh;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes sway {
+    from {
+        transform: translateX(0px);
+    }
+
+    to {
+        transform: translateX(-12px);
+    }
+}
+#svg-1.night{
+    background: -webkit-linear-gradient(top, $darkblue, $lightblue);
+}
+
+#svg-1 {
+    @include red;
+    min-height: 100%;
+    // background: grey;
+    
+    position: relative;
+
+    #mountains {
+        z-index: 2;
+        position: absolute;
+        bottom: 20%;
+        margin-bottom: -16px;
+        left: 10%;
+    }
+
+    #cloud1 {
+        z-index: 2;
+        position: absolute;
+        top: 20%;
+        right: 4%;
+        animation: bounce 2s ease-in-out 0s infinite alternate;
+    }
+
+    #cloud2 {
+        z-index: 1;
+        position: absolute;
+        top: 22%;
+        right: 16%;
+        animation: bounce 3.5s ease-in-out 2s infinite alternate;
+    }
+
+    .trees {
+        // color:#292e42;
+        // color:#3f2145;
+        // color:#4b6d30;
+
+        width: 100%;
+        height: 130px;
+        z-index: 4;
+        position: absolute;
+        bottom: 20%;
+        margin-bottom: -100px;
+    }
+
+    div.grass {
+        position: absolute;
+        width: 50%;
+        height: 27px;
+        z-index: 0;
+        bottom: 100px;
+        left: 500px;
+    }
+
+    div.grass.two {
+        position: absolute;
+        width: 50%;
+        height: 25px;
+        z-index: 4;
+        bottom: 80px;
+    }
+
+    // background: linear-gradient(to bottom, #587709 0%, #82b010 100%);
+    #ground {
+        z-index: 1;
+        width: 100%;
+        height: 20%;
+        position: absolute;
+        bottom: 0;
+        background: $greenprimary;
+        
+    }
+    #ground.night{
+        background: $greenprimary;
+    }
+    #ground.day{
+        background: linear-gradient(to bottom, #61830a 0%, #729a0d 100%);
+    }
+
+    #hills {
+        position: absolute;
+        left: 10%;
+        margin-left: -120px;
+        margin-bottom: -86px;
+        bottom: 20%;
+        z-index: 3;
+    }
+
+    #stars {
+        width: 100%;
+        height: 100%;
+    }
+}

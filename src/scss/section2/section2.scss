@@ -1,0 +1,41 @@
+@import '../variables.scss';
+@import './background.scss';
+
+#section2-main{
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    perspective: 2px;
+    transform-style: preserve-3d;
+    @include background;
+}
+#section2-main.quit{
+    animation: imgout 1s ease-in-out forwards;
+}
+    // .para{
+    //     @include red;
+    //     width: 100vw;
+    //     // height: fit-content;
+    //     height: 200vh;
+    //     position: relative;
+    //     transform-style: preserve-3d;
+    //     z-index: -1;
+    //     p {
+    //         color: green;
+    //     }
+    //     &::after{
+    //         // background-image: url("../../img/bling1.png");
+    //         background-repeat: no-repeat;
+    //         background-position: right;
+    //         background-size: cover;
+    //         position: absolute;
+    //         top: 0px;
+    //         left: 0px;
+    //         right: 0px;
+    //         bottom: 0px;
+    //         // z-index:-1;
+    //         content: "";
+    //         transform: translateZ(-20px) scale(12);
+    //     }
+    // }
+    

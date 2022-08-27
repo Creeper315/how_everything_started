@@ -1,0 +1,340 @@
+#svg-2{
+    .st0 {
+        fill: #C39467;
+    }
+
+    .st1 {
+        fill: #80AD12;
+    }
+
+    .st2 {
+        fill: #91C60E;
+    }
+
+    .st3 {
+        fill: #5D8E07;
+    }
+
+    .st4 {
+        fill: #7BA816;
+    }
+
+    .st5 {
+        fill: #5F7505;
+    }
+
+    .st6 {
+        fill: #75960E;
+    }
+    svg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .sun {
+        background-color: yellow;
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        top: 0;
+        right: 55%;
+        left: 45%;
+        bottom: auto;
+        z-index: -99;
+        border-radius: 100%;
+        box-shadow: 0 0 45px 5px white,
+            0 0 25px 10px yellow,
+            inset 0 0 15px 5px yellow;
+    }
+        .sailboat {
+            height: 180px;
+            z-index: 999;
+            position: absolute;
+            top: auto;
+            left: -50%;
+            right: 100%;
+            bottom: 50px;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            -webkit-perspective: 1500;
+            animation: sail 50s infinite linear;
+            top: auto;
+        }
+    
+        .sailboat svg {
+            animation: float 5s infinite cubic-bezier(0.7, 0.7, 0.1, 0.4);
+        }
+}
+
+
+
+#svg-2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    border-bottom: 80px solid #086292;
+    height: 100%;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    background: #05abe0;
+    background: linear-gradient(to bottom, #05abe0 0%, #87e0fd 100%);
+    z-index: -2;
+    div{
+        transform: translateY(-100px) !important;
+    }
+}
+
+#svg-2>div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+// #svg-2>div.seawall {
+//     width: 200%;
+//     height: 50px;
+//     background: linear-gradient(90deg, transparent 50%, rgba(0, 0, 0, 0.25) 50%) #0e374e;
+//     background-size: 50px 50px;
+//     border-top: 10px solid #8a8a8a;
+//     z-index: 999;
+//     bottom: -40px;
+//     left: -50%;
+//     z-index: 6;
+// }
+
+// #svg-2>div.ground {
+//     width: 200%;
+//     height: 140px;
+//     bottom: 0;
+//     left: -50%;
+//     background: #587709;
+//     background: linear-gradient(to bottom, #587709 0%, #82b010 100%);
+//     z-index: -1;
+// }
+
+#svg-2>div.clouds {
+    height: 410px;
+    opacity: 0.75;
+    bottom: 100px;
+    z-index: 2;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -webkit-perspective: 1000;
+    animation: clouds 90s infinite linear;
+}
+
+#svg-2>div.clouds.two {
+    height: 310px;
+    opacity: 0.25;
+    bottom: 50px;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -webkit-perspective: 1000;
+    animation: clouds 160s infinite linear;
+}
+
+@keyframes clouds {
+    from {
+        left: 50%;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+// #svg-2>div.trees {
+//     height: 200px;
+//     z-index: 5;
+//     bottom: 20px;
+// }
+
+// #svg-2>div.grass {
+//     width: 100%;
+//     height: 55px;
+//     z-index: 0;
+//     bottom: 100px;
+// }
+
+// #svg-2>div.grass.two {
+//     width: 100%;
+//     height: 50px;
+//     z-index: 4;
+//     bottom: 10px;
+// }
+
+#svg-2>div.buildings {
+    width: 100%;
+    height: 310px;
+    bottom: 50px;
+    z-index: 3;
+}
+
+/* Sailboat */
+
+
+@keyframes sail {
+    0% {
+        left: -50%;
+        right: 100%;
+        bottom: 50px;
+    }
+
+    90%,
+    100% {
+        left: 100%;
+        right: -50%;
+        bottom: 50px;
+    }
+}
+
+/* Bird */
+.bird-wrapper {
+    position: absolute;
+    width: 100%;
+    animation: fly 15s infinite linear;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.bird div {
+    position: absolute;
+}
+
+.bird {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    animation: float 0.7s infinite cubic-bezier(0.7, 0.7, 0.1, 0.4);
+}
+
+.bird-body-one,
+.bird-body-two,
+.bird-wing-left,
+.bird-wing-right {
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.bird-body-one {
+    border-width: 15px;
+    border-left-width: 25px;
+    border-top-width: 20px;
+    border-right-width: 60px;
+    border-top-color: #ade6fe;
+    border-radius: 15px;
+}
+
+.bird-body-two {
+    left: 50px;
+    bottom: 0;
+    border-width: 5px;
+    border-left-width: 5px;
+    border-top-width: 2px;
+    border-right-width: 10px;
+    border-bottom-color: #dff4fd;
+    border-radius: 15px;
+}
+
+.bird-wing-left {
+    left: 20px;
+    bottom: -5px;
+    border-width: 10px;
+    border-left-width: 20px;
+    border-bottom-width: 0;
+    border-right-width: 10px;
+    border-bottom-color: #dff4fd;
+    animation: flap-left 0.7s ease-in-out infinite;
+}
+
+.bird-wing-right {
+    left: 22px;
+    top: 4px;
+    border-width: 10px;
+    border-left-width: 20px;
+    border-bottom-width: 0;
+    border-right-width: 10px;
+    border-top-color: #dff4fd;
+    animation: flap-right 0.7s ease-in-out infinite;
+}
+
+@keyframes flap-right {
+
+    0%,
+    10% {
+        border-top-width: 20px;
+    }
+
+    40%,
+    60% {
+        border-top-width: 10px;
+    }
+
+    100% {
+        border-top-width: 40px;
+    }
+}
+
+@keyframes flap-left {
+    0% {
+        border-bottom-width: 0;
+    }
+
+    40%,
+    60% {
+        border-bottom-width: 40px;
+    }
+
+    100% {
+        border-bottom-width: 0;
+    }
+}
+
+@keyframes fly {
+
+    0%,
+    10% {
+        left: -50%;
+        top: 150px;
+        transform: scale3d(0.75, 0.75, 1);
+    }
+
+    90%,
+    100% {
+        left: 100%;
+        top: 160px;
+        transform: scale3d(0.25, 0.25, 1);
+    }
+}
+
+@keyframes float {
+    0% {
+        top: 25px;
+    }
+
+    50% {
+        top: 0;
+    }
+
+    100% {
+        top: 25px;
+    }
+}
